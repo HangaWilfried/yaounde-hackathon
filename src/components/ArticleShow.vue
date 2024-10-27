@@ -11,20 +11,8 @@ const props = defineProps<{
 const currentIndex = ref<number>(0);
 const sliderContainer = ref<HTMLElement | null>(null);
 
-const viewPort = computed<number>(() => sliderContainer.value?.offsetWidth ?? 0)
-
-const widthDependingSlideElements = computed(
-  (): Record<string, string> => {
-    if(viewPort.value) {
-      return {
-        width: props.article.images.length * viewPort.value + "px",
-      }
-    } return { width: 'auto' }
-  },
-);
 const listPosition = computed(
   (): Record<string, string> => ({
-    // transform: `translateX(-${currentIndex.value * viewPort.value}px)`,
     transform: `translateX(-${currentIndex.value * 100}%)`,
   }),
 );
@@ -162,7 +150,9 @@ onMounted(() => {
             />
           </div>
         </div>
-        <button class="bg-blue-500 text-white font-bold rounded-lg h-10">Buy</button>
+        <RouterLink class="block" :to="{ name: 'payment', params: { article: article.name } }">
+          <button class="w-full hover:!bg-blue-500 bg-blue-500 text-white font-bold rounded-lg h-10">Buy</button>
+        </RouterLink>
       </section>
     </section>
   </main>

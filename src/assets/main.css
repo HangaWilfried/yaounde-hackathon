@@ -7,4 +7,8 @@
         @apply outline-none rounded-lg focus:ring-2 border p-2
         focus:ring-blue-300 focus:border-blue-500 border-slate-300;
     }
+
+    button {
+        @apply border-none hover:bg-blue-50 py-1 px-2 active:p-2 active:ring-2;
+    }
 }

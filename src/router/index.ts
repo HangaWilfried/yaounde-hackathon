@@ -40,13 +40,25 @@ const router = createRouter({
         {
           name: "market",
           path: "market",
-          component: () => import("@/views/MarketPlaceList.vue")
-        },
-        {
-          name: "market details",
-          path: "market/:name",
-          component: () => import("@/views/MarketPlaceDetailsPage.vue"),
-          props: true
+          component: () => import("@/views/MarketLayout.vue"),
+          children: [
+            {
+              name: "market list",
+              path: "",
+              component: () => import("@/views/MarketPlaceList.vue")
+            },
+            {
+              name: "market details",
+              path: ":name",
+              component: () => import("@/views/MarketPlaceDetailsPage.vue"),
+              props: true
+            },
+            {
+              name: "payment",
+              path: "payment/:article",
+              component: () => import("@/views/PaymentPage.vue")
+            },
+          ]
         },
         {
           name: "profile",

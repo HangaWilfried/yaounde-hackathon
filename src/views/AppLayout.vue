@@ -43,7 +43,7 @@ const actions = ref([
 </script>
 
 <template>
-  <main class="bg-white">
+  <main class="bg-white overflow-hidden m-0 p-0 box-border">
     <header class="shadow flex items-center justify-between px-4">
       <div class="size-24">
         <BaseImage url="logo.png" />
@@ -65,8 +65,10 @@ const actions = ref([
           </RouterLink>
         </template>
       </div>
-      <div class="grow">
-        <RouterView></RouterView>
+      <div class="grow bg-gray-100 min-h-[90vh] p-4">
+        <div class="size-full bg-white rounded-xl">
+          <RouterView></RouterView>
+        </div>
       </div>
     </section>
     <footer></footer>
