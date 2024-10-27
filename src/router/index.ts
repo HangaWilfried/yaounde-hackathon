@@ -6,28 +6,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      name: "auth",
-      path: "/auth",
-      component: AuthLayout,
-      children: [
-        {
-          name: "registration",
-          path: "registration",
-          component: () => import("@/views/auth/RegistrationPage.vue")
-        },
-        {
-          name: "login",
-          path: "login",
-          component: () => import("@/views/auth/LoginPage.vue")
-        },
-        {
-          path: "callback/google",
-          name: "auth.google.login",
-          component: () => import("@/views/auth/GoogleProcessingLogin.vue"),
-        },
-      ]
-    },
-    {
       name: "root",
       path: "/",
       component: () => import("@/views/AppLayout.vue"),
@@ -83,6 +61,28 @@ const router = createRouter({
           name: "dashboard",
           path: "dashboard",
           component: () => import("@/views/ApplicationStats.vue")
+        },
+      ]
+    },
+    {
+      name: "auth",
+      path: "/auth",
+      component: AuthLayout,
+      children: [
+        {
+          name: "registration",
+          path: "registration",
+          component: () => import("@/views/auth/RegistrationPage.vue")
+        },
+        {
+          name: "login",
+          path: "login",
+          component: () => import("@/views/auth/LoginPage.vue")
+        },
+        {
+          path: "callback/google",
+          name: "auth.google.login",
+          component: () => import("@/views/auth/GoogleProcessingLogin.vue"),
         },
       ]
     }
