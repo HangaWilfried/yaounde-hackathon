@@ -1,9 +1,18 @@
-import type { Role } from '@/utils/types/enum'
+import { Role } from '@/utils/types/enum'
+import type { UserDTO } from '@/utils/types'
 
 export class User {
   public isNull: boolean;
-  constructor(private user: {[id: string]: unknown}) {
+  constructor(private user: UserDTO) {
     this.isNull = false;
+  }
+
+  get id(): string {
+    return this.user.id ?? ""
+  }
+
+  get email(): string {
+    return this.user.email ?? ""
   }
 
   get lastname(): string {
@@ -19,7 +28,11 @@ export class User {
   }
 
   get role(): Role {
-    return this.user.role
+    return this.user.role ?? Role.USER
+  }
+
+  get dto(): UserDTO {
+    return this.user
   }
 }
 

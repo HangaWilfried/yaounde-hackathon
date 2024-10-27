@@ -1,25 +1,26 @@
 import { emptyUser, User } from '@/domain/User'
 import { emptyValue, Value } from '@/domain/Value'
 
-import type { Status } from '@/utils/types/enum'
+import { Status } from '@/utils/types/enum'
+import type { TransactionDTO } from '@/utils/types'
 
 export class Transaction {
   public isNull: boolean;
 
-  constructor(private transaction: {[id: string]: unknown}) {
+  constructor(private transaction: TransactionDTO) {
     this.isNull = false
   }
 
   get id(): string {
-    return this.transaction.id
+    return this.transaction.id ?? ""
   }
 
   get issueDate(): string {
-    return this.transaction.issueDate
+    return this.transaction.issueDate ?? ""
   }
 
   get status(): Status {
-    return this.transaction.status
+    return this.transaction.status ?? Status.ABORT
   }
 
   get fees(): Value {
@@ -27,7 +28,7 @@ export class Transaction {
   }
 
   get productId(): string {
-    return this.transaction.productId
+    return this.transaction.productId ?? ""
   }
 
   get author(): User {

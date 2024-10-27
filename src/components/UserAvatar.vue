@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue'
-import BaseImage from '@/components/BaseImage.vue'
 
 import { ChevronDownIcon } from "@heroicons/vue/24/outline"
 import type { User } from '@/domain/User'
@@ -29,13 +28,7 @@ const shortcutName = computed<string>(() => {
       class="cursor-pointer flex gap-2 items-center"
     >
       <div :class="['size-10 rounded-full bg-slate-100', { 'p-2': !!user.picture }]">
-        <BaseImage
-          v-if="user.picture"
-          rounded="rounded-full"
-          :is-local="false"
-          :url="user.picture"
-        />
-        <span v-else>{{ shortcutName }}</span>
+        <span>{{ shortcutName }}</span>
       </div>
       <ChevronDownIcon
         :class="[
@@ -47,14 +40,14 @@ const shortcutName = computed<string>(() => {
     <Transition>
       <div
         v-if="showSubMenu"
-        class="flex flex-col absolute -left-10 top-4 bg-white shadow z-10 rounded-lg p-2"
+        class="flex flex-col absolute -left-32 top-10 bg-white shadow z-10 rounded-lg p-2 min-w-44"
       >
-        <span class="hover:bg-slate-100 rounded-lg p-1">
+        <span class="hover:bg-slate-200 cursor-pointer rounded-lg p-2">
           {{ user.lastname }} {{ user.firstname }}
         </span>
         <span
           @click="showLogoutModal = true"
-          class="hover:bg-slate-100 rounded-lg p-1"
+          class="hover:bg-slate-200 cursor-pointer rounded-lg p-2"
         >
           Logout
         </span>

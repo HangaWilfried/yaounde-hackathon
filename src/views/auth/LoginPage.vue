@@ -4,9 +4,17 @@ import { useRouter } from 'vue-router'
 // import { googleSdkLoaded,  } from "vue3-google-login";
 import { type CallbackTypes, decodeCredential } from "vue3-google-login";
 
+import { ExclamationTriangleIcon } from "@heroicons/vue/24/outline"
+
+import useVuelidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
+
 import BaseImage from '@/components/BaseImage.vue'
 import TextField from '@/components/TextField.vue'
 import GoogleIcon from '@/components/GoogleIcon.vue'
+import { useSessionStore } from '@/stores/session'
+
+const sessionStore = useSessionStore()
 
 type Credential = {
   email: string;
@@ -17,6 +25,13 @@ const credential = ref<Credential>({
   email: "",
   password: "",
 })
+
+const rules = {
+  email: { required },
+  password: { required },
+}
+
+const v$ = useVuelidate(rules, credential)
 
 const router = useRouter()
 
@@ -42,8 +57,16 @@ const callback: CallbackTypes.CredentialCallback = (response) => {
   console.log("Handle the userData", userData)
 };
 
+const hasError = ref<boolean>(false)
+
 const login = async (): Promise<void> => {
-  await router.push("/");
+  const isValid = await v$.value.$validate();
+  if(isValid) {
+    const { error } = sessionStore.loginUsingCredentials(credential.value.email, credential.value.password);
+    hasError.value = !!error;
+    if(error) return;
+    await router.push("/");
+  }
 }
 </script>
 
@@ -56,16 +79,22 @@ const login = async (): Promise<void> => {
       class="p-6 py-10 rounded-xl bg-white w-[525px] flex flex-col gap-4"
       @submit.prevent="login"
     >
+      <div
+        v-if="hasError"
+        class="rounded-lg bg-red-50 p-2 text-red-500 text-sm flex items-center gap-2">
+        <ExclamationTriangleIcon class="size-8" />
+        <span>Login failed!</span>
+      </div>
       <div class="flex flex-col gap-2 items-center">
         <h1 class="font-bold text-xl">Your details</h1>
         <span class="font-medium text-xs">
           Please provide your email and password
         </span>
       </div>
-      <TextField label="Email" v-model="credential.email" />
-      <TextField label="Password" v-model="credential.password" />
+      <TextField :errors="v$.email.$errors" label="Email" v-model="credential.email" />
+      <TextField :errors="v$.password.$errors" label="Password" v-model="credential.password" />
       <div class="mt-2 grid grid-cols-1">
-        <button class="bg-blue-500 text-white" type="submit">Sign in</button>
+        <button class="h-12 bg-blue-500 hover:!bg-blue-500 text-white" type="submit">Sign in</button>
       </div>
       <section class="pt-7 space-y-4">
         <div class="relative border h-[1px]">

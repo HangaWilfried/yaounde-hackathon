@@ -22,7 +22,9 @@ const logout = async (): Promise<void> => {
 <template>
   <ModalWrapper @close="close">
     <div class="flex flex-col gap-7 bg-white rounded-lg p-4">
-      <h1>Are you sure to Logout ?</h1>
+      <h1 class="text-left font-bold text-xl border-gray-300 border-b pb-4">
+        Are you sure to Logout ?
+      </h1>
       <div class="flex gap-2 items-center">
         <button @click="close" class="text-gray-900 font-bold">cancel</button>
         <button @click="logout" class="text-blue-500 font-bold">confirm</button>

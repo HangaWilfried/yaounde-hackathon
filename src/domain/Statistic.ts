@@ -1,16 +1,18 @@
+import type { StatisticDTO } from '@/utils/types'
+
 export class Statistic {
   public isNull: boolean
 
-  constructor(private stat: {[id: string]: unknown}) {
+  constructor(private stat: StatisticDTO) {
     this.isNull = true
   }
 
   get text(): string {
-    return this.stat.text
+    return this.stat.text ?? ""
   }
 
   get total(): number {
-    return this.stat.total
+    return this.stat.total ?? 0
   }
 }
 

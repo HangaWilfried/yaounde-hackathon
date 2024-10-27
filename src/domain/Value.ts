@@ -1,16 +1,18 @@
+import type { ValueDTO } from '@/utils/types'
+
 export class Value {
   public isNull: boolean
 
-  constructor(private value: {[id: string]: unknown}) {
+  constructor(private value: ValueDTO) {
     this.isNull = false
   }
 
   get currency(): string {
-    return this.value.currency
+    return this.value.currency ?? "XAF"
   }
 
   get amount(): number {
-    return this.value.amount
+    return this.value.amount ?? 0
   }
 
   get format(): string {

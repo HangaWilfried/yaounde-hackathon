@@ -1,20 +1,22 @@
+import type { NotificationDTO } from '@/utils/types'
+
 export class Notification {
   public isNull: boolean;
 
-  constructor(private notification: {[id: string]: unknown}) {
+  constructor(private notification: NotificationDTO) {
     this.isNull = false
   }
 
   get id(): string {
-    return this.notification.id
+    return this.notification.id ?? "";
   }
 
   get issueDate(): string {
-    return this.notification.issueDate
+    return this.notification.issueDate ?? "";
   }
 
   get content(): string {
-    return this.notification.content
+    return this.notification.content ?? "";
   }
 }
 

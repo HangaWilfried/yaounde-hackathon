@@ -1,0 +1,80 @@
+import type { TransactionDTO } from '@/utils/types'
+import { Role, Status } from '@/utils/types/enum'
+
+export const transactions: TransactionDTO[] = [
+  {
+    id: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    author: {
+      id: "1b4e28ba-2fa1-11d2-883f-0016d3cca427",
+      lastname: "Doe",
+      firstname: "John",
+      picture: "john_doe.jpg",
+      role: Role.ADMIN,
+      email: "john.doe@example.com",
+    },
+    issueDate: "2024-10-01",
+    status: Status.SUCCESS,
+    fees: { amount: 1000, currency: "USD" },
+    productId: "prod-001",
+  },
+  {
+    id: "ec1a83a3-8123-489e-9cd2-3c4c5e2f69e7",
+    author: {
+      id: "b7fdd264-6d54-4e27-bb8e-3afdd55bc983",
+      lastname: "Smith",
+      firstname: "Jane",
+      picture: "jane_smith.jpg",
+      role: Role.USER,
+      email: "jane.smith@example.com",
+    },
+    issueDate: "2024-10-02",
+    status: Status.PENDING,
+    fees: { amount: 500, currency: "EUR" },
+    productId: "prod-002",
+  },
+  {
+    id: "12b896b2-0b4a-4c3c-b546-2fb5f6e4eaf7",
+    author: {
+      id: "9d6a1a50-5d6d-4b23-8f85-70d2e736d17f",
+      lastname: "Brown",
+      firstname: "Charlie",
+      picture: "charlie_brown.jpg",
+      role: Role.VENDOR,
+      email: "charlie.brown@example.com",
+    },
+    issueDate: "2024-10-03",
+    status: Status.FAILED,
+    fees: { amount: 1500, currency: "GBP" },
+    productId: "prod-003",
+  },
+  {
+    id: "a78b3c98-46a1-4be8-97f8-ef5a5d6f8d6a",
+    author: {
+      id: "f2c54a27-bb3b-4b44-a160-6e6ddae6b1a7",
+      lastname: "Wilson",
+      firstname: "Anna",
+      picture: "anna_wilson.jpg",
+      role: Role.USER,
+      email: "anna.wilson@example.com",
+    },
+    issueDate: "2024-10-04",
+    status: Status.SUCCESS,
+    fees: { amount: 800, currency: "CAD" },
+    productId: "prod-004",
+  },
+  {
+    id: "d5a90b47-3a91-43c5-a0d7-2faaf5b056d8",
+    author: {
+      id: "5d8d7c3e-9137-4d32-896f-b8e6eaf1972b",
+      lastname: "Taylor",
+      firstname: "Chris",
+      picture: "chris_taylor.jpg",
+      role: Role.ADMIN,
+      email: "chris.taylor@example.com",
+    },
+    issueDate: "2024-10-05",
+    status: Status.PENDING,
+    fees: { amount: 1200, currency: "USD" },
+    productId: "prod-005",
+  },
+];

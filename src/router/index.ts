@@ -38,6 +38,10 @@ const router = createRouter({
           component: () => import("@/views/NotificationsPage.vue")
         },
         {
+          path: '',
+          redirect: () => ({ path: '/market' }),
+        },
+        {
           name: "market",
           path: "market",
           component: () => import("@/views/MarketLayout.vue"),
