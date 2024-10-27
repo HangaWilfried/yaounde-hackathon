@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { type CallbackTypes, decodeCredential } from "vue3-google-login";
+// import { type CallbackTypes, decodeCredential } from "vue3-google-login";
 
 import BaseImage from '@/components/BaseImage.vue'
 import TextField from '@/components/TextField.vue'
@@ -39,10 +39,10 @@ const setLocation = async (): Promise<void> => {
 
 const router = useRouter()
 
-const callback: CallbackTypes.CredentialCallback = (response) => {
-  const userData = decodeCredential(response.credential)
-  console.log("Handle the userData", userData)
-};
+// const callback: CallbackTypes.CredentialCallback = (response) => {
+//   const userData = decodeCredential(response.credential)
+//   console.log("Handle the userData", userData)
+// };
 
 const login = async (): Promise<void> => {
   await router.push("/");
@@ -83,13 +83,13 @@ const login = async (): Promise<void> => {
           </span>
         </div>
         <div class="flex justify-center">
-          <GoogleLogin :callback="callback" prompt auto-login>
+<!--          <GoogleLogin :callback="callback" prompt auto-login>-->
             <span
               class="cursor-pointer flex gap-2 items-center border border-slate-100 rounded-full px-2 py-1 size-10"
             >
             <GoogleIcon />
           </span>
-          </GoogleLogin>
+<!--          </GoogleLogin>-->
           <!--          <span-->
           <!--            class="cursor-pointer flex gap-2 items-center border border-slate-100 rounded-full px-2 py-1 size-10"-->
           <!--            @click="loginUsingGoogleAuthProvider"-->
