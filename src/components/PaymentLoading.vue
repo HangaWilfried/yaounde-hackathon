@@ -16,7 +16,7 @@ onMounted(() => {
     return heap + tail;
   };
   const timeoutId = setTimeout(async () => {
-    // await router.push("/transaction")
+    await router.push("/transaction")
     clearTimeout(timeoutId)
   }, 2000)
 })

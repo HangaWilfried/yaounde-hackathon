@@ -82,7 +82,7 @@ const router = createRouter({
         {
           name: "dashboard",
           path: "dashboard",
-          component: () => import("@/views/TransactionPage.vue")
+          component: () => import("@/views/ApplicationStats.vue")
         },
       ]
     }

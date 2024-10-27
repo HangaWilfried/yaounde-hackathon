@@ -16,16 +16,17 @@ const transactionStore = useTransactionStore()
 
 onBeforeMount(() => {
   isLoading.value = true;
-  setTimeout(() => {
+  const time = setTimeout(() => {
     transactions.value = transactionStore.systemTransactions
     isLoading.value = false;
+    clearTimeout(time)
   }, 3000)
 })
 </script>
 
 <template>
   <section class="flex flex-col gap-7 p-10 bg-white">
-    <h1>List of transactions</h1>
+    <h1 class="text-2xl font-extrabold">List of transactions</h1>
     <AppLoader v-if="isLoading" />
     <template v-else>
       <section
