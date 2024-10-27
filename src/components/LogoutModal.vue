@@ -2,6 +2,8 @@
 import { useRouter } from 'vue-router'
 import ModalWrapper from '@/components/ModalWrapper.vue'
 
+import { googleLogout } from "vue3-google-login"
+
 const router = useRouter()
 const emit = defineEmits(["close"]);
 
@@ -11,6 +13,7 @@ const close = (): void => {
 
 const logout = async (): Promise<void> => {
   localStorage.clear();
+  googleLogout()
   await router.push({ name: "login" })
   close();
 }

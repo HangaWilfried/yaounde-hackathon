@@ -57,7 +57,6 @@ const actions = ref([
           :key="action.name"
         >
           <RouterLink
-            v-if="action.roles.includes(user.role)"
             :to="{ path: '/'+action.path }"
             class="hover:bg-green-100 hover:text-green-500 rounded-lg p-2"
             active-class="bg-green-300 text-green-800"
