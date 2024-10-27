@@ -51,7 +51,7 @@ const login = async (): Promise<void> => {
 
 <template>
   <section class="flex min-h-screen justify-center items-center gap-[10%]">
-    <div class="size-52">
+    <div class="size-64">
       <BaseImage url="lite-logo.png" />
     </div>
     <form
@@ -96,6 +96,15 @@ const login = async (): Promise<void> => {
           <!--          >-->
           <!--            <GoogleIcon />-->
           <!--          </span>-->
+        </div>
+        <div class="mt-2 flex gap-2 items-center justify-center">
+          <span>Already member of citywise ?</span>
+          <RouterLink
+            class="text-blue-500 underline underline-offset-4 font-bold"
+            to="/auth/login"
+          >
+            sign in
+          </RouterLink>
         </div>
       </section>
     </form>

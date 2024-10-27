@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const url = `
 linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-url(${new URL("@/assets/images/login-font.png", import.meta.url).href})
+url(${new URL("@/assets/images/e5.jpg", import.meta.url).href})
 `;
 </script>
 
